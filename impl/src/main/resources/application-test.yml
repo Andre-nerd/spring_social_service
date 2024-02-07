@@ -1,0 +1,85 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        show_sql: true
+        temp:
+          use_jdbc_metadata_defaults: false
+        hbm2ddl:
+          auto: none
+  liquibase:
+    change-log: classpath:changelog_init.xml
+    enabled: true
+    drop-first: false
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
+  kafka:
+    bootstrap-servers: ${BOOTSTRAP-SERVERS:localhost:9092}
+    consumer:
+      group-id: ${GROUP-ID:group-1}
+
+  mail:
+    host: smtp.yandex.ru
+    port: 465
+    username: javapro42@yandex.ru
+    password: mjysuhedahhswnef
+
+vars:
+  captchaCharStr: 0123456789
+host:
+  local: http://212.22.70.159:1111
+
+endpoints:
+  admin: /api/v1/admin/**
+  public:
+    /api/v1/auth/**,
+    /swagger-ui/**,
+    /swagger-ui**,
+    /api-docs/**,
+    /api-docs.yaml,
+    /swagger.json,
+    /swagger-resources/**,
+    /webjars/**,
+    /v1/api-docs
+
+roles:
+  admin: "admin"
+
+jwt:
+  token:
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+#    refresh-token:
+#      expiration: 604800000 # 7 days
+
+vk_data:
+  token: vk1.a.-sCwwHZ-dCzuLf9UOHiiwRxHtVW8BUg-XcX0reW-P6nY5tG9l-qDUqE4ADOmE1GOBTQTSAauxK5xuxcVYPLbihmO81gmqotg2_mpaa8RNWkfbN2OJOdYUxfk8-mbyKS31K3Ml69kbBevq_VHzWBEiRAlcOWIuSWG07F0xqdvAP1MmDbUPB7WqhGEvDknJM_37eg13qmrDZi3JKR5jMer3Q
+  app_id: 51762981
+  country_code_list: RU,BY,KZ,AM
+
+springdoc:
+  api-docs:
+    path: "/api-docs"
+  swagger-ui:
+    path: "/swagger-ui"
+    operationsSorter: method
+
+cloudinary:
+  cloud_name: dmcmd4g2s
+  api_key: 358825755328599
+  api_secret: NoYeSddTS8z06a5Dga_wQZO6RZU
+
+logging:
+  level:
+    org:
+      apache:
+        kafka: OFF
+
+kafka-enable: false
